@@ -8,7 +8,10 @@
     "git.ignoreLimitWarning": true,
     "python.formatting.provider": "autopep8",
     "python.formatting.autopep8Args": [
-        "--aggressive", "--aggressive", "--in-place",
-        "--max-line-length", "80"],
+        "--max-line-length",
+        "80",
+        "--aggressive",
+        "--aggressive",
+    ],
     "editor.formatOnSave": true,
 }
