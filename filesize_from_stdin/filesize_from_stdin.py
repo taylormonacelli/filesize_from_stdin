@@ -4,12 +4,19 @@
 
 import operator
 import sys
-import humanize
 import os
 from pathlib import Path
+import humanize
 
+
+def doit():
+    """test stuff"""
 
     flist = {}
+
+    if sys.stdin.isatty():
+        print('fail')
+        sys.exit()
 
     for line in sys.stdin.readlines():
         path = Path(line.strip()).resolve()
