@@ -1,8 +1,8 @@
 {
     "python.pythonPath": "${workspaceFolder}/.myenv/bin/python",
     "python.venvPath": "${workspaceFolder}/.myenv",
-    "python.unitTest.unittestEnabled": false,
-    "python.unitTest.nosetestsEnabled": false,
+    "python.unitTest.unittestEnabled": true,
+    "python.unitTest.nosetestsEnabled": true,
     "python.unitTest.pyTestEnabled": true,
     "python.linting.pylintUseMinimalCheckers": false,
     "git.ignoreLimitWarning": true,
