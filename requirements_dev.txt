@@ -1,5 +1,3 @@
-humanize
-pathlib
 nose
 autopep8
 pylint
