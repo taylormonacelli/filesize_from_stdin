@@ -4,11 +4,22 @@
 """Tests for `filesize_from_stdin` package."""
 
 import os
+import pytest
 
 from click.testing import CliRunner
 
 from context import filesize_from_stdin
 from filesize_from_stdin import cli
+
+
+@pytest.fixture
+def response():
+    """Sample pytest fixture.
+
+    See more at: http://doc.pytest.org/en/latest/fixture.html
+    """
+    # import requests
+    # return requests.get('https://github.com/audreyr/cookiecutter-pypackage')
 
 
 def test_non_empty_file(tmpdir):
