@@ -76,7 +76,7 @@ def test_file_does_not_exist(tmpdir):
     assert f'' == result.output
 
 
-def test_no_stdin_given():
+def test_no_stdin_given(tmpdir):
     """Here's what happens if you don't pass input."""
     runner = CliRunner()
     result = runner.invoke(cli.main)

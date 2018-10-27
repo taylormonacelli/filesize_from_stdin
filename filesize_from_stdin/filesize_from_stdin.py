@@ -4,11 +4,9 @@
 
 import operator
 import sys
-from sys import stdin
 import os
 from pathlib import Path
 import humanize
-import fcntl
 
 
 def doit():
@@ -17,23 +15,13 @@ def doit():
     the list of files and their size in bytes sorted by size.
     """
 
-    # make stdin a non-blocking file
-    fdescriptor = sys.stdin.fileno()
-    flock = fcntl.fcntl(fdescriptor, fcntl.F_GETFL)
-    fcntl.fcntl(fdescriptor, fcntl.F_SETFL, flock | os.O_NONBLOCK)
-
-    try:
-        std = sys.stdin.readlines()
-    except BaseException:
-        print('No input')
-
     flist = {}
 
-    if not stdin.isatty():
+    if sys.stdin.isatty():
         print('fail')
         sys.exit()
 
-    for line in std:
+    for line in sys.stdin.readlines():
         path = Path(line.strip()).resolve()
         if os.path.exists(path):
             flist[path] = os.stat(path).st_size
