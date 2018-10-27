@@ -10,7 +10,10 @@ import humanize
 
 
 def doit():
-    """test stuff"""
+    """
+    Given a list of paths separated by newline, output
+    the list of files and their size in bytes sorted by size.
+    """
 
     flist = {}
 
