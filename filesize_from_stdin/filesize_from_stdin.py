@@ -19,7 +19,7 @@ def doit():
 
     if sys.stdin.isatty():
         print('fail')
-        sys.exit()
+        sys.exit(1)
 
     for line in sys.stdin.readlines():
         path = Path(line.strip()).resolve()
@@ -28,4 +28,4 @@ def doit():
 
     # sort by size
     for path, size in sorted(flist.items(), key=operator.itemgetter(1)):
-        print(("%s %s" %(humanize.naturalsize(size, gnu=True), path)))
+        print(("%s %s" % (humanize.naturalsize(size, gnu=True), path)))
