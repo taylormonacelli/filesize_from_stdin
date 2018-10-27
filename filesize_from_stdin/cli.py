@@ -8,7 +8,7 @@ sys.path.append(os.path.join(
     os.path.dirname(__file__),
     '..','..'))
 
-from filesize_from_stdin.filesize_from_stdin import doit
+from filesize_from_stdin import doit
 
 @click.command()
 def main():
