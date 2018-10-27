@@ -28,4 +28,5 @@ def doit():
 
     # sort by size
     for path, size in sorted(flist.items(), key=operator.itemgetter(1)):
-        print(f'{humanize.naturalsize(size, gnu=True)} {path}')
+        t = "{} {}".format(humanize.naturalsize(size, gnu=True), path)
+        print(t)
