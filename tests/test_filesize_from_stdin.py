@@ -30,7 +30,8 @@ def test_non_empty_file(tmpdir):
     assert path.read() == "content"
     result = runner.invoke(cli.main, input=path)
     assert result.exit_code == 0
-    assert "7B {}\n".format(path) in result.output
+    t = "7B {}\n".format(path)
+    assert t in result.output
 
 
 def test_file_with_space(tmpdir):
@@ -41,7 +42,8 @@ def test_file_with_space(tmpdir):
     assert path.read() == "content"
     result = runner.invoke(cli.main, input=path)
     assert result.exit_code == 0
-    assert "7B {}\n".format(path) in result.output
+    t = "7B {}\n".format(path)
+    assert t in result.output
 
 
 def test_file_with_quote_in_name(tmpdir):
@@ -52,7 +54,8 @@ def test_file_with_quote_in_name(tmpdir):
     assert path.read() == "content"
     result = runner.invoke(cli.main, input=path)
     assert result.exit_code == 0
-    assert "7B {}\n".format(path) in result.output
+    t = "7B {}\n".format(path)
+    assert t in result.output
 
 
 def test_empty_file(tmpdir):
@@ -63,7 +66,8 @@ def test_empty_file(tmpdir):
     assert path.read() == ""
     result = runner.invoke(cli.main, input=path)
     assert result.exit_code == 0
-    assert "0B {}\n".format(path) in result.output
+    t = "0B {}\n".format(path)
+    assert t in result.output
 
 
 def test_file_does_not_exist(tmpdir):
