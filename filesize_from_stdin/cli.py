@@ -1,15 +1,19 @@
 # -*- coding: utf-8 -*-
-
 """Console script for filesize_from_stdin."""
-import sys
+
 import click
-from filesize_from_stdin.filesize_from_stdin import doit
+import sys
+import os
+sys.path.append(os.path.join(
+    os.path.dirname(__file__),
+    '..'))
+import filesize_from_stdin
 
 
 @click.command()
 def main():
     """Console script for filesize_from_stdin."""
-    doit()
+    filesize_from_stdin.doit()
 
 
 if __name__ == "__main__":
