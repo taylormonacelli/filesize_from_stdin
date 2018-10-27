@@ -22,9 +22,9 @@ def doit():
         sys.exit(1)
 
     for line in sys.stdin.readlines():
-        if os.path.exists(path):
-            path = str(Path(line.strip()).resolve())
-            flist[path] = os.stat(path).st_size
+        path = Path(line.strip())
+        if path.exists():
+            flist[str(path.resolve())] = path.stat().st_size
 
     # sort by size
     for path, size in sorted(flist.items(), key=operator.itemgetter(1)):
