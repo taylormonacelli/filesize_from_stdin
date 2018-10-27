@@ -4,7 +4,6 @@
 
 import operator
 import sys
-import os
 from pathlib import Path
 import humanize
 
