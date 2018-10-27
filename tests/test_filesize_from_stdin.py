@@ -81,7 +81,7 @@ def test_no_stdin_given(tmpdir):
     runner = CliRunner()
     result = runner.invoke(cli.main)
     assert result.exit_code == 0
-    assert f'fail\n' == result.output
+    assert f'' == result.output
 
 
 def test_commandline_help():
