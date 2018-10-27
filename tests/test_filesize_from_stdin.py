@@ -7,6 +7,7 @@ import os
 import pytest
 
 from click.testing import CliRunner
+
 from context import filesize_from_stdin
 from filesize_from_stdin import cli
 
