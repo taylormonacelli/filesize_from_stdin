@@ -22,7 +22,7 @@ def doit():
         sys.exit(1)
 
     for line in sys.stdin.readlines():
-        path = Path(line.strip()).resolve()
+        path = str(Path(line.strip()).resolve())
         if os.path.exists(path):
             flist[path] = os.stat(path).st_size
 
