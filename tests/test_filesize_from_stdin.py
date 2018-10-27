@@ -73,7 +73,7 @@ def test_file_does_not_exist(tmpdir):
     assert not my_dir.listdir()
     result = runner.invoke(cli.main, input=f'{my_path}')
     assert result.exit_code == 0
-    assert f'' == result.output
+    assert result.output == ''
 
 
 def test_no_stdin_given():
@@ -81,7 +81,7 @@ def test_no_stdin_given():
     runner = CliRunner()
     result = runner.invoke(cli.main)
     assert result.exit_code == 0
-    assert f'' == result.output
+    assert result.output == ''
 
 
 def test_commandline_help():
