@@ -29,6 +29,9 @@ def test_non_empty_file(tmpdir):
     path.write("content")
     assert path.read() == "content"
     result = runner.invoke(cli.main, input=str(path))
+    print(type(result))
+    print(type(result.exit_code))
+    assert(type(result.exit_code) == 'int')
     assert result.exit_code == 0
     assert ('7B %s\n' % str(path)) in result.output
 
@@ -40,6 +43,9 @@ def test_file_with_space(tmpdir):
     path.write("content")
     assert path.read() == "content"
     result = runner.invoke(cli.main, input=str(path))
+    print(type(result))
+    print(type(result.exit_code))
+    assert(type(result.exit_code) == 'int')
     assert result.exit_code == 0
     assert ('7B %s\n' % str(path)) in result.output
 
@@ -51,6 +57,9 @@ def test_file_with_quote_in_name(tmpdir):
     path.write("content")
     assert path.read() == "content"
     result = runner.invoke(cli.main, input=str(path))
+    print(type(result))
+    print(type(result.exit_code))
+    assert(type(result.exit_code) == 'int')
     assert result.exit_code == 0
     assert ('7B %s\n' % str(path)) in result.output
 
@@ -62,6 +71,9 @@ def test_empty_file(tmpdir):
     path.write("")
     assert path.read() == ""
     result = runner.invoke(cli.main, input=str(path))
+    print(type(result))
+    print(type(result.exit_code))
+    assert(type(result.exit_code) == 'int')
     assert result.exit_code == 0
     assert ('0B %s\n' % str(path)) in result.output
 
@@ -73,6 +85,9 @@ def test_file_does_not_exist(tmpdir):
     path = os.path.join(my_dir, "non_existant_file.txt")
     assert not my_dir.listdir()
     result = runner.invoke(cli.main, input=str(path))
+    print(type(result))
+    print(type(result.exit_code))
+    assert(type(result.exit_code) == 'int')
     assert result.exit_code == 0
     assert result.output == ''
 
@@ -81,6 +96,9 @@ def test_no_stdin_given():
     """Here's what happens if you don't pass input."""
     runner = CliRunner()
     result = runner.invoke(cli.main)
+    print(type(result))
+    print(type(result.exit_code))
+    assert(type(result.exit_code) == 'int')
     assert result.exit_code == 0
     assert result.output == ''
 
@@ -89,5 +107,8 @@ def test_commandline_help():
     """Test the CLI."""
     runner = CliRunner()
     help_result = runner.invoke(cli.main, ['--help'])
+    print(type(result))
+    print(type(result.exit_code))
+    assert(type(result.exit_code) == 'int')
     assert help_result.exit_code == 0
     assert '--help  Show this message and exit.' in help_result.output
