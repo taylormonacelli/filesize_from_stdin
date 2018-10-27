@@ -29,7 +29,7 @@ def test_non_empty_file(tmpdir):
     path = tmpdir.join("hello.txt")
     path.write("content")
     assert path.read() == "content"
-    result = runner.invoke(cli.main, input=str(path + '\n'))
+    result = runner.invoke(cli.main, input=str(path) + '\n')
     print(pprint(vars(result)))
     print("type(result):%s, type(result.exit_code):%s" %
           (type(result), type(result.exit_code)))
@@ -43,7 +43,7 @@ def test_file_with_space(tmpdir):
     path = tmpdir.join("hel lo.txt")
     path.write("content")
     assert path.read() == "content"
-    result = runner.invoke(cli.main, input=str(path + '\n'))
+    result = runner.invoke(cli.main, input=str(path) + '\n')
     print(pprint(vars(result)))
     assert int(result.exit_code) == 0
     assert ('7B %s\n' % str(path)) in result.output
@@ -55,7 +55,7 @@ def test_file_with_quote_in_name(tmpdir):
     path = tmpdir.join("hello'.txt")
     path.write("content")
     assert path.read() == "content"
-    result = runner.invoke(cli.main, input=str(path + '\n'))
+    result = runner.invoke(cli.main, input=str(path) + '\n')
     print(pprint(vars(result)))
     print("type(result):%s, type(result.exit_code):%s" %
           (type(result), type(result.exit_code)))
@@ -69,7 +69,7 @@ def test_empty_file(tmpdir):
     path = tmpdir.join("hello1.txt")
     path.write("")
     assert path.read() == ""
-    result = runner.invoke(cli.main, input=str(path + '\n'))
+    result = runner.invoke(cli.main, input=str(path) + '\n')
     print(pprint(vars(result)))
     print("type(result):%s, type(result.exit_code):%s" %
           (type(result), type(result.exit_code)))
@@ -83,7 +83,7 @@ def test_file_does_not_exist(tmpdir):
     my_dir = tmpdir.mkdir("sub")
     path = os.path.join(str(my_dir), "non_existant_file.txt")
     assert not my_dir.listdir()
-    result = runner.invoke(cli.main, input=str(path + '\n'))
+    result = runner.invoke(cli.main, input=str(path) + '\n')
     print(pprint(vars(result)))
     print("type(result):%s, type(result.exit_code):%s" %
           (type(result), type(result.exit_code)))
