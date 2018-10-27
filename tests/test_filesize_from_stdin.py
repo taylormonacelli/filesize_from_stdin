@@ -30,7 +30,7 @@ def test_non_empty_file(tmpdir):
     assert path.read() == "content"
     result = runner.invoke(cli.main, input=path)
     assert result.exit_code == 0
-    t = "7B {}\n".format(path)
+    t = "7B {0}\n".format(path)
     assert t in result.output
 
 
@@ -42,7 +42,7 @@ def test_file_with_space(tmpdir):
     assert path.read() == "content"
     result = runner.invoke(cli.main, input=path)
     assert result.exit_code == 0
-    t = "7B {}\n".format(path)
+    t = "7B {0}\n".format(path)
     assert t in result.output
 
 
@@ -54,7 +54,7 @@ def test_file_with_quote_in_name(tmpdir):
     assert path.read() == "content"
     result = runner.invoke(cli.main, input=path)
     assert result.exit_code == 0
-    t = "7B {}\n".format(path)
+    t = "7B {0}\n".format(path)
     assert t in result.output
 
 
@@ -66,7 +66,7 @@ def test_empty_file(tmpdir):
     assert path.read() == ""
     result = runner.invoke(cli.main, input=path)
     assert result.exit_code == 0
-    t = "0B {}\n".format(path)
+    t = "0B {0}\n".format(path)
     assert t in result.output
 
 
