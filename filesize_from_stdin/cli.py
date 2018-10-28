@@ -11,7 +11,7 @@ os.path.join(
     '..','..')
 )
 
-from filesize_from_stdin.filesize_from_stdin import doit
+from .filesize_from_stdin import doit
 
 @click.command()
 def main():
