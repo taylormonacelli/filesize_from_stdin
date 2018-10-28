@@ -10,7 +10,7 @@
         "--max-line-length",
         "80",
         "--aggressive",
-        "--aggressive"
+        "--aggressive",
     ],
-    "editor.formatOnSave": true
+    "editor.formatOnSave": true,
 }
