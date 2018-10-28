@@ -1,4 +1,3 @@
-import filesize_from_stdin
 import os
 import sys
 
@@ -8,3 +7,5 @@ sys.path.insert(
         os.path.join(
             os.path.dirname(__file__),
             '..')))
+
+import filesize_from_stdin
