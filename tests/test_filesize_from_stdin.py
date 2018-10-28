@@ -5,7 +5,6 @@
 
 import os
 import pytest
-from pprint import pprint
 
 from click.testing import CliRunner
 

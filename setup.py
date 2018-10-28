@@ -54,6 +54,6 @@ setup(
     test_suite='tests',
     tests_require=test_requirements,
     url='https://github.com/taylormonacelli/filesize_from_stdin',
-    version='1.0.3',
+    version='0.1.5',
     zip_safe=False,
 )
