@@ -76,9 +76,9 @@ def test_empty_file(tmpdir):
 def test_file_does_not_exist(tmpdir):
     """Test non existant files."""
     runner = CliRunner()
-    my_dir = tmpdir.mkdir("sub")
-    path = my_dir.join("non_existant_file.txt")
-    assert not my_dir.listdir()
+    sub = tmpdir.mkdir("sub")
+    path = sub.join("non_existant_file.txt")
+    assert not sub.listdir()
     result = runner.invoke(cli.main, input=str(path))
     assert result.exit_code == 0
     assert result.output == ''
