@@ -1,10 +1,9 @@
 # -*- coding: utf-8 -*-
+
+import sys
+import click
 from .filesize_from_stdin import doit
 """Console script for filesize_from_stdin."""
-
-import click
-import sys
-import os
 
 
 @click.command()
