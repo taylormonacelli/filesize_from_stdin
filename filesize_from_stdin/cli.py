@@ -7,7 +7,7 @@ from .filesize_from_stdin import doit
 
 
 @click.command()
-def main():
+def main(args=None):
     """Console script for filesize_from_stdin."""
     doit()
 
