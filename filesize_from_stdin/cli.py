@@ -4,9 +4,12 @@
 import click
 import sys
 import os
-sys.path.append(os.path.join(
+
+sys.path.insert(0, 
+os.path.join(
     os.path.dirname(__file__),
-    '..','..'))
+    '..','..')
+)
 
 from filesize_from_stdin.filesize_from_stdin import doit
 
