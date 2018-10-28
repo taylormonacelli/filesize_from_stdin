@@ -8,7 +8,7 @@ from pathlib import Path
 import humanize
 
 
-def doit():
+def get_file_size_from_string():
     """
     Given a list of paths separated by newline, output
     the list of files and their size in bytes sorted by size.
@@ -25,18 +25,16 @@ def doit():
         if path.exists():
             flist[str(path.resolve())] = path.stat().st_size
 
+    return flist
+
+
+def display_friendly(lst):
+    """Print list of files with file's size"""
     # sort by size
-    sorted_lst = []
-    for path, size in sorted(flist.items(), key=operator.itemgetter(1)):
-        sorted_lst.append("%s %s" %
-                          (humanize.naturalsize(size, gnu=True), path))
+    for path, size in sorted(lst.items(), key=operator.itemgetter(1)):
+        print("%s %s" % (humanize.naturalsize(size, gnu=True), path))
 
-    return sorted_lst
-
-def display(lst):
-    for item in lst:
-        print(item)
 
 if __name__ == "__main__":
     # execute only if run as a script
-    display(doit())
+    display_friendly(get_file_size_from_string())
