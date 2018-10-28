@@ -3,7 +3,6 @@
 
 """Tests for `filesize_from_stdin` package."""
 
-import os
 import pytest
 
 from click.testing import CliRunner
@@ -42,6 +41,14 @@ def test_file_with_space(tmpdir):
     result = runner.invoke(cli.main, input='{}\n'.format(path))
     assert result.exit_code == 0
     assert '7B {}\n'.format(path) in result.output
+
+
+def test_command_line_interface():
+    """Test the CLI."""
+    runner = CliRunner()
+    help_result = runner.invoke(cli.main, ['--help'])
+    assert help_result.exit_code == 0
+    assert '--help  Show this message and exit.' in help_result.output
 
 
 def test_file_with_quote_in_name(tmpdir):
@@ -83,11 +90,3 @@ def test_no_stdin_given():
     result = runner.invoke(cli.main)
     assert result.exit_code == 0
     assert result.output == ''
-
-
-def test_commandline_help():
-    """Test the CLI."""
-    runner = CliRunner()
-    help_result = runner.invoke(cli.main, ['--help'])
-    assert help_result.exit_code == 0
-    assert '--help  Show this message and exit.' in help_result.output
