@@ -8,6 +8,7 @@ import pytest
 
 from click.testing import CliRunner
 
+from filesize_from_stdin import filesize_from_stdin
 from filesize_from_stdin import cli
 
 
