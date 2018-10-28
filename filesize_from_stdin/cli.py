@@ -3,13 +3,13 @@
 """Console script for filesize_from_stdin."""
 import sys
 import click
-from .filesize_from_stdin import doit
+from .filesize_from_stdin import doit, display
 
 
 @click.command()
 def main(args=None):
     """Console script for filesize_from_stdin."""
-    doit()
+    display(doit())
 
 
 if __name__ == "__main__":

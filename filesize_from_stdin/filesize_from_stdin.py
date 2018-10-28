@@ -26,5 +26,17 @@ def doit():
             flist[str(path.resolve())] = path.stat().st_size
 
     # sort by size
+    sorted_lst = []
     for path, size in sorted(flist.items(), key=operator.itemgetter(1)):
-        print(("%s %s" % (humanize.naturalsize(size, gnu=True), path)))
+        sorted_lst.append("%s %s" %
+                          (humanize.naturalsize(size, gnu=True), path))
+
+    return sorted_lst
+
+def display(lst):
+    for item in lst:
+        print(item)
+
+if __name__ == "__main__":
+    # execute only if run as a script
+    display(doit())
