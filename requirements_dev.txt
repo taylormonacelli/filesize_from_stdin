@@ -1,3 +1,4 @@
+click==7.0
 humanize
 pathlib
 nose
