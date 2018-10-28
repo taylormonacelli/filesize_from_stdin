@@ -27,9 +27,9 @@ def test_non_empty_file(tmpdir):
     path = tmpdir.join("hello.txt")
     path.write("content")
     assert path.read() == "content"
-    result = runner.invoke(cli.main, input='{}\n'.format(path))
+    result = runner.invoke(cli.main, input=path)
     assert result.exit_code == 0
-    assert '7B {}\n'.format(path) in result.output
+    assert '7B {}'.format(path) in result.output
 
 
 def test_file_with_space(tmpdir):
@@ -38,9 +38,9 @@ def test_file_with_space(tmpdir):
     path = tmpdir.join("hel lo.txt")
     path.write("content")
     assert path.read() == "content"
-    result = runner.invoke(cli.main, input='{}\n'.format(path))
+    result = runner.invoke(cli.main, input='{}'.format(path))
     assert result.exit_code == 0
-    assert '7B {}\n'.format(path) in result.output
+    assert '7B {}'.format(path) in result.output
 
 
 def test_command_line_interface():
@@ -57,9 +57,9 @@ def test_file_with_quote_in_name(tmpdir):
     path = tmpdir.join("hello'.txt")
     path.write("content")
     assert path.read() == "content"
-    result = runner.invoke(cli.main, input=str(path) + '\n')
+    result = runner.invoke(cli.main, input=path)
     assert result.exit_code == 0
-    assert '7B {}\n'.format(path) in result.output
+    assert '7B {}'.format(path) in result.output
 
 
 def test_empty_file(tmpdir):
@@ -68,9 +68,9 @@ def test_empty_file(tmpdir):
     path = tmpdir.join("hello1.txt")
     path.write("")
     assert path.read() == ""
-    result = runner.invoke(cli.main, input=str(path) + '\n')
+    result = runner.invoke(cli.main, input=path)
     assert result.exit_code == 0
-    assert '0B {}\n'.format(path) in result.output
+    assert '0B {}'.format(path) in result.output
 
 
 def test_file_does_not_exist(tmpdir):
@@ -79,7 +79,7 @@ def test_file_does_not_exist(tmpdir):
     my_dir = tmpdir.mkdir("sub")
     path = my_dir.join("non_existant_file.txt")
     assert not my_dir.listdir()
-    result = runner.invoke(cli.main, input=str(path) + '\n')
+    result = runner.invoke(cli.main, input=path)
     assert result.exit_code == 0
     assert result.output == ''
 
