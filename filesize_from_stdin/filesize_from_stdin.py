@@ -14,6 +14,7 @@ def get_file_list(source=sys.stdin):
     the list of files and their size in bytes sorted by size.
     """
 
+    # if stdin is empty
     if sys.stdin.isatty():
         return {}
 
