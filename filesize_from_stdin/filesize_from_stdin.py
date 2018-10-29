@@ -29,9 +29,7 @@ def get_file_list_from_stdin(stdin):
 
 
 def display_friendly(dct):
-    """
-    Print list of files with file's size
-    """
+    """Print list of files with file's size"""
     # sort by size
     for path, size in sorted(dct.items(), key=operator.itemgetter(1)):
         print("%s %s" % (humanize.naturalsize(size, gnu=True), path))
