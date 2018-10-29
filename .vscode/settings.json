@@ -4,6 +4,7 @@
     "python.unitTest.unittestEnabled": false,
     "python.unitTest.pyTestEnabled": true,
     "python.unitTest.nosetestsEnabled": false,
+    "python.unitTest.autoTestDiscoverOnSaveEnabled": true,
     "python.linting.pylintUseMinimalCheckers": false,
     "git.ignoreLimitWarning": true,
     "python.formatting.provider": "autopep8",
