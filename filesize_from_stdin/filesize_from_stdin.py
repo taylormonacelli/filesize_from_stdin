@@ -8,7 +8,7 @@ from pathlib import Path
 import humanize
 
 
-def file_sizes_from_stdin(stdin):
+def get_file_list_from_stdin(stdin):
     """
     Given a list of paths separated by newline, output
     the list of files and their size in bytes sorted by size.
@@ -29,7 +29,9 @@ def file_sizes_from_stdin(stdin):
 
 
 def display_friendly(dct):
-    """Print list of files with file's size"""
+    """
+    Print list of files with file's size
+    """
     # sort by size
     for path, size in sorted(dct.items(), key=operator.itemgetter(1)):
         print("%s %s" % (humanize.naturalsize(size, gnu=True), path))
@@ -37,4 +39,4 @@ def display_friendly(dct):
 
 if __name__ == "__main__":
     # execute only if run as a script
-    display_friendly(file_sizes_from_stdin(sys.stdin))
+    display_friendly(get_file_list_from_stdin(sys.stdin))
