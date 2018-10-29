@@ -4,6 +4,7 @@
 
 import operator
 import sys
+import io
 from pathlib import Path
 import humanize
 
@@ -14,7 +15,7 @@ def get_file_list_from_stdin(stdin):
     the list of files and their size in bytes sorted by size.
     """
 
-    if sys.stdin.isatty():
+    if isinstance(stdin, io.TextIOWrapper):
         sys.stderr.write('fail')
         sys.exit(1)
 
