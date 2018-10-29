@@ -14,7 +14,7 @@ def file_sizes_from_stdin():
     the list of files and their size in bytes sorted by size.
     """
 
-    flist = {}
+    dct = {}
 
     if sys.stdin.isatty():
         sys.stderr.write('fail')
@@ -23,15 +23,15 @@ def file_sizes_from_stdin():
     for line in sys.stdin.readlines():
         path = Path(line.strip())
         if path.exists():
-            flist[str(path.resolve())] = path.stat().st_size
+            dct[str(path.resolve())] = path.stat().st_size
 
-    return flist
+    return dct
 
 
-def display_friendly(lst):
+def display_friendly(dct):
     """Print list of files with file's size"""
     # sort by size
-    for path, size in sorted(lst.items(), key=operator.itemgetter(1)):
+    for path, size in sorted(dct.items(), key=operator.itemgetter(1)):
         print("%s %s" % (humanize.naturalsize(size, gnu=True), path))
 
 
