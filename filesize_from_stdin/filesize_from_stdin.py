@@ -4,18 +4,15 @@
 
 import operator
 import sys
-import io
 from pathlib import Path
 import humanize
 
 
-def get_file_sizes(source=sys.stdin):
+def get_file_list_from_stdin(stdin):
     """
-    Given a list of paths separated by newline, output the list of files and their size in bytes sorted by size.
+    Given a list of paths separated by newline, output
+    the list of files and their size in bytes sorted by size.
     """
-
-    print('taylor')
-    print(type(source))
 
     if sys.stdin.isatty():
         sys.stderr.write('fail')
@@ -23,16 +20,7 @@ def get_file_sizes(source=sys.stdin):
 
     dct = {}
 
-    if not isinstance(source, io.TextIOWrapper):
-        pass
-
-    try:
-        with open(source) as flist:
-            source = flist.readlines()
-    except TypeError:
-        pass
-
-    for line in source:
+    for line in stdin:
         path = Path(line.strip())
         if path.exists():
             dct[str(path.resolve())] = path.stat().st_size
@@ -49,4 +37,4 @@ def display_friendly(dct):
 
 if __name__ == "__main__":
     # execute only if run as a script
-    display_friendly(get_file_sizes())
+    display_friendly(get_file_list_from_stdin(sys.stdin))

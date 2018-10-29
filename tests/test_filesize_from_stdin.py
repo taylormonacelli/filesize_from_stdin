@@ -87,8 +87,6 @@ def test_file_does_not_exist(tmpdir):
 def test_no_stdin_given():
     """Here's what happens if you don't pass input."""
     runner = CliRunner()
-    # TODO: isatty does not get excerciesed here but it should be, thats the
-    # intention
     result = runner.invoke(cli.main)
     assert result.exit_code == 0
     assert result.output == ''
