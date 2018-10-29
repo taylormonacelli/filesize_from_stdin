@@ -17,7 +17,7 @@ def get_file_size_from_string():
     flist = {}
 
     if sys.stdin.isatty():
-        print('fail')
+        sys.stderr.write('fail')
         sys.exit(1)
 
     for line in sys.stdin.readlines():
