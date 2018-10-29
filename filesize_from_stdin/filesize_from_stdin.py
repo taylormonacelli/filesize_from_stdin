@@ -8,19 +8,18 @@ from pathlib import Path
 import humanize
 
 
-def get_file_list_from_stdin(stdin):
+def get_file_list(source=sys.stdin):
     """
     Given a list of paths separated by newline, output
     the list of files and their size in bytes sorted by size.
     """
 
     if sys.stdin.isatty():
-        sys.stderr.write('fail')
-        sys.exit(1)
+        return {}
 
     dct = {}
 
-    for line in stdin:
+    for line in source:
         path = Path(line.strip())
         if path.exists():
             dct[str(path.resolve())] = path.stat().st_size
@@ -37,4 +36,4 @@ def display_friendly(dct):
 
 if __name__ == "__main__":
     # execute only if run as a script
-    display_friendly(get_file_list_from_stdin(sys.stdin))
+    display_friendly(get_file_list())
