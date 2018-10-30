@@ -1,26 +1,4 @@
 {
     "python.pythonPath": "${workspaceFolder}/.myenv/bin/python",
     "python.venvPath": "${workspaceFolder}/.myenv",
-    "python.unitTest.unittestEnabled": false,
-    "python.unitTest.pyTestEnabled": true,
-    "python.unitTest.nosetestsEnabled": false,
-    "python.unitTest.autoTestDiscoverOnSaveEnabled": true,
-    "python.linting.pylintUseMinimalCheckers": false,
-    "git.ignoreLimitWarning": true,
-    "python.formatting.provider": "autopep8",
-    "python.formatting.autopep8Args": [
-        "--max-line-length",
-        "80",
-        "--aggressive",
-        "--aggressive"
-    ],
-    "editor.formatOnSave": true,
-    "files.exclude": {
-        "**/*.pyc": true,
-        "**/__pycache__": true,
-        "**/.pytest_cache": true,
-        "**/.eggs": true,
-        "**/.git": true,
-        "**/.DS_Store": true
-    }
 }
