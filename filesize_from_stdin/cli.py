@@ -10,7 +10,7 @@ from .filesize_from_stdin import display_friendly, get_file_list
 def main(args=None):
     """Console script for filesize_from_stdin."""
     display_friendly(get_file_list(sys.stdin))
-
+    return 0
 
 if __name__ == "__main__":
     sys.exit(main())  # pragma: no cover
