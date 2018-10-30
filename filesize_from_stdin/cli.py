@@ -12,5 +12,6 @@ def main(args=None):
     display_friendly(get_file_list(sys.stdin))
     return 0
 
+
 if __name__ == "__main__":
     sys.exit(main())  # pragma: no cover
