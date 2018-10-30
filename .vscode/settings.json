@@ -1,0 +1,4 @@
+{
+    "python.pythonPath": "${workspaceFolder}/.pyenv/bin/python",
+    "python.venvPath": "${workspaceFolder}/.pyenv"
+}
