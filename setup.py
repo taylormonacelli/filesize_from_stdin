@@ -12,9 +12,9 @@ with open('HISTORY.rst') as history_file:
     history = history_file.read()
 
 requirements = [
-    'Click',
-    'pathlib',
-    'humanize',
+    'Click<8.0',
+    'pathlib<2.0',
+    'humanize<=1.0',
 ]
 
 setup_requirements = ['pytest-runner', ]
