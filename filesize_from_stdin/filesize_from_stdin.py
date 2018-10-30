@@ -38,4 +38,3 @@ def display_friendly(dct):
 if __name__ == "__main__":
     # execute only if run as a script
     display_friendly(get_file_list())
-    return 0
