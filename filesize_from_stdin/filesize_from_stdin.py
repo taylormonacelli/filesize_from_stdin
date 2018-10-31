@@ -9,8 +9,7 @@ import humanize
 
 
 def get_file_list(source=sys.stdin):
-    """
-    Given a list of paths separated by newline, output
+    """Given a list of paths separated by newline, output
     the list of files and their size in bytes sorted by size.
     """
 
