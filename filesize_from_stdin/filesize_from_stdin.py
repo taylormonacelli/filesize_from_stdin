@@ -14,8 +14,15 @@ def get_file_list(source=sys.stdin):
     """
 
     # prevent blocking if stdin is empty
-    if sys.stdin.isatty():
+    if sys.stdin.isatty() and not isinstance(source, str):
         return {}
+
+    try:
+        if not Path(source).exists():
+            sys.stderr.write('{}: No such file or directory\n'.format(source))
+            sys.exit(1)
+    except TypeError:
+        pass
 
     dct = {}
 

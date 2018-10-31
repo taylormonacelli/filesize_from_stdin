@@ -19,6 +19,18 @@ def response():
     # return requests.get('https://github.com/audreyr/cookiecutter-pypackage')
 
 
+def test_file_list_as_argument_but_doesnt_exist(tmpdir):
+    """Test file with single word in it."""
+    runner = CliRunner()
+    # generate file path, but don't create file
+    path = tmpdir.join("tmpfile1.txt")
+
+    result = runner.invoke(cli.main, str(path))
+
+    assert result.exit_code == 1
+    assert '{}: No such file or directory\n'.format(path) in result.output
+
+
 def test_file_list_as_argument(tmpdir):
     """Test file with single word in it."""
     runner = CliRunner()
