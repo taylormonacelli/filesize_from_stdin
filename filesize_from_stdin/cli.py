@@ -7,9 +7,10 @@ from .filesize_from_stdin import display_friendly, get_file_list
 
 
 @click.command()
-def main():
+@click.argument('filename')
+def main(filename):
     """Console script for filesize_from_stdin."""
-    display_friendly(get_file_list(sys.stdin))
+    display_friendly(get_file_list(source=filename))
     return 0
 
 

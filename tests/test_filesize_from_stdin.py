@@ -21,6 +21,25 @@ def response():
     # return requests.get('https://github.com/audreyr/cookiecutter-pypackage')
 
 
+def test_file_list_as_argument(tmpdir):
+    """Test file with single word in it."""
+    runner = CliRunner()
+    flist = tmpdir.join("filelist.txt")
+
+    path1 = tmpdir.join("tmpfile1.txt")
+    path1.write("content")
+
+    path2 = tmpdir.join("tmpfile2.txt")
+    path2.write("hel")
+
+    flist.write('{}\n{}'.format(path1, path2))
+    result = runner.invoke(cli.main, str(flist))
+
+    assert result.exit_code == 0
+    assert '7B {}'.format(path1) in result.output
+    assert '3B {}'.format(path2) in result.output
+
+
 def test_non_empty_file(tmpdir):
     """Test file with single word in it."""
     runner = CliRunner()
@@ -38,7 +57,7 @@ def test_file_with_space(tmpdir):
     path = tmpdir.join("hel lo.txt")
     path.write("content")
     assert path.read() == "content"
-    result = runner.invoke(cli.main, input='{}'.format(path))
+    result = runner.invoke(cli.main, input=str(path))
     assert result.exit_code == 0
     assert '7B {}'.format(path) in result.output
 
