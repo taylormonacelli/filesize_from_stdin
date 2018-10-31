@@ -7,7 +7,7 @@ filesize-from-stdin
         :target: https://pypi.python.org/pypi/filesize_from_stdin
 
 .. image:: https://img.shields.io/travis/taylormonacelli/filesize_from_stdin.svg
-        :target: https://travis-ci.org/taylormonacelli/filesize_from_stdin
+        :target: https://travis-ci.org/TaylorMonacelli/filesize_from_stdin
 
 .. image:: https://readthedocs.org/projects/filesize-from-stdin/badge/?version=latest
         :target: https://filesize-from-stdin.readthedocs.io/en/latest/?badge=latest
@@ -15,7 +15,7 @@ filesize-from-stdin
 
 
 .. image:: https://pyup.io/repos/github/taylormonacelli/filesize_from_stdin/shield.svg
-     :target: https://pyup.io/repos/github/taylormonacelli/filesize_from_stdin/
+     :target: https://pyup.io/repos/github/TaylorMonacelli/filesize_from_stdin/
      :alt: Updates
 
 
