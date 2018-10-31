@@ -14,14 +14,6 @@ def get_file_list(source=sys.stdin):
     the list of files and their size in bytes sorted by size.
     """
 
-    if sys.stdin.isatty() and len(sys.argv) > 1:
-        try:
-            path = Path(sys.argv[1])
-            if path.exists():
-                pass
-        except Exception as ex:
-            pass
-
     # prevent blocking if stdin is empty
     if sys.stdin.isatty():
         return {}

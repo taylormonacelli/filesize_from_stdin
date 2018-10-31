@@ -21,26 +21,6 @@ def response():
     # return requests.get('https://github.com/audreyr/cookiecutter-pypackage')
 
 
-def test_file_list_as_argument(tmpdir):
-    """Test file with single word in it."""
-    runner = CliRunner()
-    flist = tmpdir.join("filelist.txt")
-
-    path = tmpdir.join("tmpfile1.txt")
-    path.write("content")
-    flist.write(path)
-    flist.write("\n")
-
-    path = tmpdir.join("tmpfile2.txt")
-    path.write("hello")
-    flist.write(path)
-    flist.write("\n")
-
-    result = runner.invoke(cli.main, input=str(path))
-    assert result.exit_code == 0
-    assert '7B {}'.format(path) in result.output
-
-
 def test_non_empty_file(tmpdir):
     """Test file with single word in it."""
     runner = CliRunner()
