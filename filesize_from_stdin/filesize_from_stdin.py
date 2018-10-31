@@ -22,8 +22,8 @@ def get_file_list(source=sys.stdin):
 
     try:
         if Path(source).exists():
-            with open(source) as source_handle:
-                source = source_handle.readlines()
+            with open(source) as sourceh:
+                source = sourceh.readlines()
     except TypeError:
         pass
 
