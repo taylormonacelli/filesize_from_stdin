@@ -32,7 +32,7 @@ def test_file_list_as_argument(tmpdir):
     path2 = tmpdir.join("tmpfile2.txt")
     path2.write("hel")
 
-    flist.write('{}\n{}'.format(path1, path2))
+    flist.write('{}\n{}\n'.format(path1, path2))
     result = runner.invoke(cli.main, str(flist))
 
     assert result.exit_code == 0

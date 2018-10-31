@@ -14,20 +14,18 @@ def get_file_list(source=sys.stdin):
     the list of files and their size in bytes sorted by size.
     """
 
-    if len(sys.argv) > 1:
-        try:
-            path = Path(source)
-            if path.exists():
-                with open(source) as fh:
-                    source = fh.readlines()
-        except Exception as ex:
-            pass
-
     # prevent blocking if stdin is empty
     if sys.stdin.isatty():
         return {}
 
     dct = {}
+
+    try:
+        if Path(source).exists():
+            with open(source) as source_handle:
+                source = source_handle.readlines()
+    except TypeError:
+        pass
 
     for line in source:
         path = Path(line.strip())
@@ -41,8 +39,8 @@ def display_friendly(dct):
     """Print list of files with file's size"""
     # sort by size
     for path, size in sorted(dct.items(), key=operator.itemgetter(1)):
-        s = humanize.naturalsize(size, gnu=True)
-        print('{} {}'.format(s, path))
+        size = humanize.naturalsize(size, gnu=True)
+        print('{} {}'.format(size, path))
 
 
 if __name__ == "__main__":
