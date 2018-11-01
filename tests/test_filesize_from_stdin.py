@@ -19,6 +19,33 @@ def response():
     # return requests.get('https://github.com/audreyr/cookiecutter-pypackage')
 
 
+def test_file_list_as_argument_and_fed_through_stdin(tmpdir):
+    """Test file with single word in it."""
+    runner = CliRunner()
+
+    path1 = tmpdir.join("tmpfile1.txt")
+    path1.write("content")
+
+    path2 = tmpdir.join("tmpfile2.txt")
+    path2.write("hel")
+
+    path3 = tmpdir.join("tmpfile3.txt")
+    path3.write("a")
+
+    path4 = tmpdir.join("tmpfile4.txt")
+    path4.write("hello")
+
+    result = runner.invoke(
+        cli.main, [
+            str(path1), str(path2)], input='{}\n{}'.format(path3, path4))
+
+    assert result.exit_code == 0
+    assert '7B {}'.format(path1) in result.output
+    assert '3B {}'.format(path2) in result.output
+    assert '1B {}'.format(path3) in result.output
+    assert '5B {}'.format(path4) in result.output
+
+
 def test_file_list_as_argument_but_doesnt_exist(tmpdir):
     """Test file with single word in it."""
     runner = CliRunner()
@@ -27,14 +54,13 @@ def test_file_list_as_argument_but_doesnt_exist(tmpdir):
 
     result = runner.invoke(cli.main, str(path))
 
-    assert result.exit_code == 1
-    assert '{}: No such file or directory\n'.format(path) in result.output
+    assert result.exit_code == 0
+    assert '' == result.output
 
 
 def test_file_list_as_argument(tmpdir):
     """Test file with single word in it."""
     runner = CliRunner()
-    flist = tmpdir.join("filelist.txt")
 
     path1 = tmpdir.join("tmpfile1.txt")
     path1.write("content")
@@ -42,8 +68,7 @@ def test_file_list_as_argument(tmpdir):
     path2 = tmpdir.join("tmpfile2.txt")
     path2.write("hel")
 
-    flist.write('{}\n{}\n'.format(path1, path2))
-    result = runner.invoke(cli.main, str(flist))
+    result = runner.invoke(cli.main, [str(path1), str(path2)])
 
     assert result.exit_code == 0
     assert '7B {}'.format(path1) in result.output

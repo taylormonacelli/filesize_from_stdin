@@ -8,35 +8,23 @@ from pathlib import Path
 import humanize
 
 
-def get_file_list(source=sys.stdin):
+def get_file_list(filenames):
     """Given a list of paths separated by newline, output
     the list of files and their size in bytes sorted by size.
     """
 
-    # prevent blocking if stdin is empty
-    if sys.stdin.isatty() and not isinstance(source, str):
-        return {}
+    filenames = list(filenames)
 
-    try:
-        if not Path(source).exists():
-            sys.stderr.write('{}: No such file or directory\n'.format(source))
-            sys.exit(1)
-    except TypeError:
-        pass
+    # prevent blocking if stdin is empty
+    if not sys.stdin.isatty():
+        filenames += list(sys.stdin)
 
     dct = {}
 
-    try:
-        if Path(source).exists():
-            with open(source) as sourceh:
-                source = sourceh.readlines()
-    except TypeError:
-        pass
-
-    for line in source:
-        path = Path(line.strip())
+    for filename in filenames:
+        path = Path(filename.strip())
         if path.exists():
-            dct[str(path.resolve())] = path.stat().st_size
+            dct[str(path)] = path.stat().st_size
 
     return dct
 
