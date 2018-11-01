@@ -1,26 +1,32 @@
 # Config file for automatic testing at travis-ci.org
 
 language: python
-python:
-  - "2.7"
-  - "3.4"
-  - "3.5"
-  - "3.6"
-# Enable 3.7 without globally enabling sudo and dist: xenial for other build jobs
 matrix:
   include:
-    - stage: stable
-      python: "3.7"
+    - python: "3.7"
       dist: xenial
       sudo: true
-      env:
-        - REQUIREMENTS=requirements_dev.txt
-    - stage: unstable
-      python: "3.7"
+      env: REQUIREMENTS=requirements_dev.txt
+    - python: "3.7"
       dist: xenial
       sudo: true
-      env:
-        - REQUIREMENTS=requirements_dev_unpinned.txt
+      env: REQUIREMENTS=requirements_dev_unpinned.txt
+    - python: "3.6"
+      env: REQUIREMENTS=requirements_dev.txt
+    - python: "3.6"
+      env: REQUIREMENTS=requirements_dev_unpinned.txt
+    - python: "3.5"
+      env: REQUIREMENTS=requirements_dev.txt
+    - python: "3.5"
+      env: REQUIREMENTS=requirements_dev_unpinned.txt
+    - python: "3.4"
+      env: REQUIREMENTS=requirements_dev.txt
+    - python: "3.4"
+      env: REQUIREMENTS=requirements_dev_unpinned.txt
+    - python: "2.7"
+      env: REQUIREMENTS=requirements_dev.txt
+    - python: "2.7"
+      env: REQUIREMENTS=requirements_dev_unpinned.txt
 
 # Command to install dependencies, e.g. pip install -r requirements.txt --use-mirrors
 install: pip install -U tox-travis
