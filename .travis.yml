@@ -2,23 +2,14 @@
 
 language: python
 python:
-stable
-unstable
-  - "2.7-stable"
-  - "3.4-stable"
-  - "3.5-stable"
-  - "3.6-stable"
-  - "2.7-stable"
-  - "3.4-unstable"
-  - "3.5-unstable"
-  - "3.6-unstable"
+  - "2.7"
+  - "3.4"
+  - "3.5"
+  - "3.6"
 # Enable 3.7 without globally enabling sudo and dist: xenial for other build jobs
 matrix:
   include:
-    - python: "3.7-stable"
-      dist: xenial
-      sudo: true
-    - python: "3.7-unstable"
+    - python: "3.7"
       dist: xenial
       sudo: true
 
