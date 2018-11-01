@@ -14,7 +14,7 @@ filesize-from-stdin
         :alt: Documentation Status
 
 
-.. image:: https://pyup.io/repos/github/taylormonacelli/filesize_from_stdin/shield.svg
+.. image:: https://pyup.io/repos/github/TaylorMonacelli/filesize_from_stdin/shield.svg
      :target: https://pyup.io/repos/github/TaylorMonacelli/filesize_from_stdin/
      :alt: Updates
 
